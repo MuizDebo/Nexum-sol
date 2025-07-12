@@ -526,3 +526,683 @@ body.dark-mode {
         margin-bottom: 30px;
     }
 }
+
+/* Differentiators Section */
+.differentiators-section {
+    padding: 80px 5%;
+    background-color: var(--navbar-bg); /* Use a slightly different background if desired, or keep light mode white */
+    color: var(--text-color);
+}
+
+.differentiators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for items */
+    gap: 25px; /* Space between items */
+    max-width: 1100px; /* Slightly narrower grid for these points */
+    margin: 0 auto;
+}
+
+.differentiator-item {
+    background-color: var(--background-color); /* Lighter background for the item itself */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Center content within each item */
+}
+
+.differentiator-item:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+    box-shadow: 0 8px 20px var(--hover-shadow); /* Stronger shadow on hover */
+}
+
+.differentiator-item h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.differentiator-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Responsive adjustments for Differentiators Section */
+@media (max-width: 768px) {
+    .differentiators-section {
+        padding: 60px 5%;
+    }
+    .differentiators-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+    .differentiator-item {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .differentiators-section {
+        padding: 50px 1rem;
+    }
+    .differentiator-item h3 {
+        font-size: 1.3rem;
+    }
+    .differentiator-item p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Core Values Section (Revised Style) */
+.values-section {
+    padding: 100px 5%; /* More vertical padding for prominence */
+    background-color: var(--navbar-bg); /* Use navbar background for a subtle change from previous section */
+    color: var(--text-color);
+    text-align: center; /* Center content in the section */
+}
+
+.values-grid-alt {
+    display: grid;
+    /* Responsive columns: 3 on desktop, 2 on tablet, 1 on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px; /* More space between items for breathing room */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px; /* Space from subtitle */
+}
+
+.value-item-alt {
+    background-color: var(--background-color); /* Inner item background, lighter than section */
+    padding: 40px 30px; /* Increased padding for more spacious feel */
+    border-radius: 15px; /* More rounded corners for a modern, softer look */
+    box-shadow: 0 8px 25px var(--card-shadow); /* Deeper shadow for more pop */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content vertically */
+    text-align: center;
+}
+
+.value-item-alt:hover {
+    transform: translateY(-10px) scale(1.02); /* More pronounced lift and slight scale */
+    box-shadow: 0 15px 40px var(--hover-shadow); /* Even stronger shadow on hover */
+}
+
+.icon-placeholder {
+    font-size: 3.5rem; /* Larger icon size */
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    line-height: 1; /* Prevent extra space around icon */
+    background: var(--secondary-color); /* A subtle background for the icon */
+    border-radius: 50%; /* Make it a circle */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Shadow for the icon container */
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .icon-placeholder {
+    background: var(--primary-color); /* In dark mode, icon background can be primary */
+    color: var(--background-color); /* And icon itself can be the background color */
+}
+
+
+.value-item-alt h3 {
+    font-size: 1.8rem; /* Larger heading for emphasis */
+    color: var(--text-color); /* Use text color, but primary on hover? */
+    margin-top: 15px; /* Space between icon and heading */
+    margin-bottom: 10px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.value-item-alt:hover h3 {
+    color: var(--primary-color); /* Highlight heading on hover */
+}
+
+.value-item-alt p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    margin-bottom: 0;
+    max-width: 300px; /* Constrain paragraph width for better readability */
+}
+
+/* Responsive adjustments for Core Values Section */
+@media (max-width: 992px) {
+    .values-grid-alt {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust columns for tablets */
+        gap: 30px;
+    }
+    .value-item-alt {
+        padding: 35px 25px;
+    }
+    .icon-placeholder {
+        font-size: 3rem;
+        width: 70px;
+        height: 70px;
+    }
+    .value-item-alt h3 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .values-section {
+        padding: 80px 5%; /* Maintain good padding */
+    }
+    .values-grid-alt {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+    .value-item-alt {
+        max-width: 400px; /* Constrain single column items */
+        margin: 0 auto; /* Center single column items */
+    }
+    .icon-placeholder {
+        font-size: 3.2rem; /* Slightly larger icon on small mobile */
+        width: 75px;
+        height: 75px;
+    }
+}
+
+@media (max-width: 480px) {
+    .values-section {
+        padding: 60px 1rem;
+    }
+    .value-item-alt {
+        padding: 30px 20px;
+    }
+    .value-item-alt h3 {
+        font-size: 1.4rem;
+    }
+    .value-item-alt p {
+        font-size: 0.95rem;
+    }
+}
+
+/* About Section */
+.about-section {
+    padding: 100px 5%;
+    background-color: var(--background-color); /* Light background for contrast */
+    color: var(--text-color);
+    display: flex;
+    flex-direction: row; /* Default: side-by-side */
+    align-items: center;
+    justify-content: center;
+    gap: 60px; /* More space between content and image */
+    max-width: 1200px;
+    margin: 0 auto; /* Center the section content */
+}
+
+.about-content {
+    flex: 1; /* Allows content to grow */
+    max-width: 600px; /* Max width for content block */
+}
+
+/* Adjust section-title for this section to be left-aligned */
+.section-title.text-left {
+    text-align: left;
+    margin-bottom: 25px; /* Adjust spacing below title */
+}
+
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.about-text:last-of-type {
+    margin-bottom: 30px; /* More space before the button */
+}
+
+.mission-statement {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--primary-color);
+    border-left: 4px solid var(--primary-color); /* A subtle visual cue */
+    padding-left: 15px;
+    margin-left: 0; /* Ensure no default margin pushes it */
+}
+
+
+.about-image {
+    flex-shrink: 0; /* Prevent image from shrinking */
+    max-width: 500px; /* Max width for the image container */
+    text-align: center; /* Center image if it's smaller */
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Consistent rounded corners */
+    box-shadow: 0 10px 30px var(--card-shadow); /* Apply our standard shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadows */
+}
+
+/* Responsive adjustments for About Section */
+@media (max-width: 992px) {
+    .about-section {
+        flex-direction: column; /* Stack content and image on tablets */
+        gap: 40px;
+        text-align: center; /* Center text when stacked */
+    }
+
+    .section-title.text-left {
+        text-align: center; /* Center title on smaller screens */
+    }
+
+    .about-content {
+        max-width: 700px; /* Allow content to be wider when stacked */
+    }
+
+    .about-image {
+        margin-top: 20px; /* Space between content and image */
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 80px 5%;
+    }
+    .about-text {
+        font-size: 1rem;
+    }
+    .mission-statement {
+        padding-left: 10px; /* Reduce padding for smaller screens */
+        border-left-width: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section {
+        padding: 60px 1rem;
+    }
+    .about-text {
+        font-size: 0.95rem;
+    }
+    .btn-primary {
+        width: 100%; /* Make button full width on very small screens */
+        display: block;
+        text-align: center;
+    }
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    position: relative; /* Needed for overlay positioning */
+    padding: 100px 5%;
+    background-image: url('https://via.placeholder.com/1920x600?text=Futuristic+Tech+Growth'); /* Placeholder image */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Parallax effect */
+    color: #ffffff; /* White text for contrast against dark overlay */
+    text-align: center;
+    overflow: hidden; /* Prevent content overflow issues with parallax */
+}
+
+/* Overlay for readability */
+.newsletter-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent overlay */
+    z-index: 1; /* Below content but above background image */
+}
+
+/* Dark mode specific overlay adjustment */
+body.dark-mode .newsletter-overlay {
+    background-color: rgba(0, 0, 0, 0.75); /* Slightly darker overlay in dark mode */
+}
+
+.newsletter-content {
+    position: relative; /* Bring content above the overlay */
+    z-index: 2;
+    max-width: 800px; /* Constrain content width */
+    margin: 0 auto;
+}
+
+.newsletter-content .section-title {
+    color: #ffffff; /* White title for this section */
+    margin-bottom: 15px;
+}
+
+.newsletter-content .section-subtitle {
+    color: #f0f0f0; /* Off-white subtitle */
+    margin-bottom: 40px;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between input and button */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+    flex-grow: 1; /* Allow input to take available space */
+    padding: 1rem 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Consistent rounded corners */
+    font-size: 1rem;
+    color: var(--text-color); /* Text color from theme */
+    background-color: #ffffff; /* Always white background for input */
+    max-width: 400px; /* Max width for the input field */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .newsletter-form input[type="email"] {
+    background-color: #333333; /* Darker input background in dark mode */
+    border-color: #555;
+    color: #f0f0f0;
+}
+
+.newsletter-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); /* Focus glow */
+}
+
+.newsletter-form .btn-primary {
+    /* Inherits general btn-primary styles */
+    padding: 1rem 2.5rem; /* Larger padding for a more prominent button */
+    font-size: 1rem;
+    border-radius: 8px; /* Consistent with input */
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+/* Responsive adjustments for Newsletter Section */
+@media (max-width: 768px) {
+    .newsletter-section {
+        padding: 80px 5%;
+    }
+    .newsletter-content .section-title {
+        font-size: 2rem;
+    }
+    .newsletter-content .section-subtitle {
+        font-size: 1.1rem;
+    }
+    .newsletter-form {
+        flex-direction: column; /* Stack input and button vertically */
+        gap: 20px; /* Space between stacked elements */
+    }
+    .newsletter-form input[type="email"] {
+        max-width: 100%; /* Full width for input */
+    }
+    .newsletter-form .btn-primary {
+        width: 100%; /* Full width for button */
+        padding: 0.8rem 2rem; /* Adjust button padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .newsletter-section {
+        padding: 60px 1rem;
+    }
+    .newsletter-content .section-title {
+        font-size: 1.8rem;
+    }
+    .newsletter-content .section-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Founder's Note Section */
+.founder-note-section {
+    padding: 100px 5%;
+    background-color: var(--background-color); /* Light background */
+    color: var(--text-color);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.founder-note-content {
+    max-width: 800px; /* Constrain width for readability */
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 15px; /* Rounded corners for a softer look */
+    background-color: var(--navbar-bg); /* Use navbar background for the card/container */
+    box-shadow: 0 10px 30px var(--card-shadow); /* More pronounced shadow for this special section */
+    position: relative; /* For potential pseudo-elements like quote marks */
+    overflow: hidden; /* Ensure nothing spills out */
+}
+
+/* Optional: Large quote marks for visual flair */
+.founder-note-content::before {
+    content: '“';
+    font-family: serif; /* A classic font for quotes */
+    font-size: 8em; /* Very large */
+    color: var(--primary-color);
+    opacity: 0.1; /* Very subtle */
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    z-index: 0; /* Behind content */
+    line-height: 1; /* Adjust to prevent too much vertical space */
+}
+
+.founder-note-content::after {
+    content: '”';
+    font-family: serif;
+    font-size: 8em;
+    color: var(--primary-color);
+    opacity: 0.1;
+    position: absolute;
+    bottom: -30px;
+    right: 20px;
+    z-index: 0;
+    line-height: 1;
+}
+
+.quote-text {
+    font-size: 1.8rem; /* Large, impactful text for the quote */
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 25px;
+    position: relative; /* Bring text above pseudo-elements */
+    z-index: 1;
+}
+
+.founder-signature {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color); /* Highlight the founder's name */
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive adjustments for Founder's Note Section */
+@media (max-width: 992px) {
+    .founder-note-content {
+        padding: 30px;
+        max-width: 700px;
+    }
+    .quote-text {
+        font-size: 1.6rem;
+    }
+    .founder-signature {
+        font-size: 1.1rem;
+    }
+    .founder-note-content::before,
+    .founder-note-content::after {
+        font-size: 6em; /* Smaller quotes on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .founder-note-section {
+        padding: 80px 5%;
+    }
+    .founder-note-content {
+        padding: 25px;
+    }
+    .quote-text {
+        font-size: 1.4rem;
+    }
+    .founder-signature {
+        font-size: 1rem;
+    }
+    .founder-note-content::before,
+    .founder-note-content::after {
+        font-size: 5em; /* Even smaller quotes on mobiles */
+        top: 10px;
+        left: 10px;
+        bottom: -20px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .founder-note-section {
+        padding: 60px 1rem;
+    }
+    .founder-note-content {
+        padding: 20px;
+    }
+    .quote-text {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+    .founder-signature {
+        font-size: 0.95rem;
+    }
+    .founder-note-content::before,
+    .founder-note-content::after {
+        font-size: 4em;
+        top: 5px;
+        left: 5px;
+        bottom: -15px;
+        right: 5px;
+    }
+}
+
+/* Footer Section */
+footer {
+    background-color: var(--navbar-bg); /* Use navbar background for consistent dark shade */
+    color: var(--text-color);
+    padding: 60px 5% 20px; /* Top, side, and bottom padding */
+    border-top: 1px solid rgba(0,0,0,0.05); /* Subtle top border */
+    box-shadow: 0 -2px 10px var(--navbar-shadow); /* Subtle shadow at the top */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px; /* Center content and add space before bottom text */
+    text-align: left; /* Default text align */
+}
+
+.footer-brand h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.footer-brand p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.footer-links h4,
+.footer-social h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: var(--primary-color);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px; /* Space between icons */
+}
+
+.social-icons a {
+    color: var(--text-color); /* Icon color */
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px); /* Subtle lift on hover */
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.05); /* Separator line */
+}
+
+/* Responsive adjustments for Footer */
+@media (max-width: 768px) {
+    footer {
+        padding: 40px 5% 20px;
+    }
+    .footer-content {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        text-align: center; /* Center text when stacked */
+        gap: 30px; /* Reduce gap when stacked */
+    }
+    .footer-links ul,
+    .social-icons {
+        justify-content: center; /* Center list items and social icons */
+    }
+    .footer-brand h3 {
+        font-size: 1.6rem;
+    }
+    .footer-links h4,
+    .footer-social h4 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 30px 1rem 15px;
+    }
+    .footer-brand h3 {
+        font-size: 1.4rem;
+    }
+    .footer-brand p {
+        font-size: 0.85rem;
+    }
+}
