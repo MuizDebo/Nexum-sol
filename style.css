@@ -1,0 +1,528 @@
+/* Color Variables */
+:root {
+    /* Light Mode Colors */
+    --background-color: #ffffff; /* White */
+    --text-color: #333333; /* Dark Grey/Near Black */
+    --primary-color: #007bff; /* Blue */
+    --secondary-color: #0056b3; /* Darker Blue for hover/accents */
+    --navbar-bg: #ffffff;
+    --navbar-shadow: rgba(0,0,0,0.1);
+}
+
+/* Dark Mode Colors */
+body.dark-mode {
+    --background-color: #1a1a1a; /* Dark Grey/Near Black */
+    --text-color: #f0f0f0; /* Off-white */
+    --primary-color: #66b3ff; /* Lighter Blue */
+    --secondary-color: #3385ff; /* Slightly darker light blue */
+    --navbar-bg: #222222;
+    --navbar-shadow: rgba(255,255,255,0.1);
+}
+
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A bit more modern font */
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for dark/light mode */
+    box-sizing: border-box; /* Ensures padding/border are included in element's total width and height */
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%; /* Use percentage for padding for responsiveness */
+    background-color: var(--navbar-bg);
+    box-shadow: 0 2px 8px var(--navbar-shadow); /* Slightly larger shadow for depth */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .logo a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 25px; /* Spacing between nav items */
+}
+
+.navbar .nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Primary Button Style */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #ffffff !important; /* Always white text on primary button */
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: none; /* Ensure no default button border */
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+/* --- Responsive Adjustments for Navbar --- */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none; /* Hide nav links by default on small screens */
+        /* We'll add JS for a hamburger menu to toggle this later */
+    }
+
+    .navbar {
+        padding: 1rem 1rem; /* Adjust padding for smaller screens */
+    }
+}
+
+/* Theme Toggle Button */
+.btn-theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 15px; /* Space from other nav items */
+    color: var(--text-color); /* Inherit text color for icon */
+    transition: color 0.3s ease;
+    padding: 0; /* Remove default button padding */
+}
+
+.btn-theme-toggle:hover {
+    color: var(--primary-color);
+}
+
+/* Theme Toggle Button (keep existing styles, ensure it's responsive) */
+.btn-theme-toggle {
+    /* ... existing styles ... */
+    margin-right: 15px; /* Add some space if it's next to hamburger */
+}
+
+/* New: Navigation Icons Container (for mobile) */
+.nav-icons {
+    display: flex;
+    align-items: center;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px; /* Height to accommodate 3 bars */
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above other elements if needed */
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color); /* Color of the bars */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger Active State (for animation) */
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* --- Responsive Adjustments for Navbar --- */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none; /* Hide nav links by default on small screens */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        left: 0;
+        background-color: var(--navbar-bg); /* Use nav background for menu */
+        box-shadow: 0 8px 16px var(--navbar-shadow);
+        padding: 1rem 0;
+        border-top: 1px solid rgba(0,0,0,0.1); /* Subtle separator */
+        z-index: 999; /* Below the fixed navbar */
+        transform: translateY(-100%); /* Start off-screen */
+        transition: transform 0.3s ease-in-out;
+        overflow: hidden; /* Hide overflow during transition */
+    }
+
+    .navbar .nav-links.active {
+        display: flex; /* Show when active */
+        transform: translateY(0); /* Slide into view */
+    }
+
+    .navbar .nav-links ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar .nav-links li {
+        margin: 0; /* Remove horizontal margin */
+        width: 100%;
+    }
+
+    .navbar .nav-links a {
+        display: block; /* Make links full width */
+        padding: 12px 20px; /* Add padding for clickable area */
+        border-bottom: 1px solid rgba(0,0,0,0.05); /* Separator for menu items */
+    }
+
+    .navbar .nav-links li:last-child a {
+        border-bottom: none; /* No border for the last item */
+    }
+
+    /* Show hamburger menu on small screens */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Adjust navbar padding for smaller screens if needed */
+    .navbar {
+        padding: 1rem 1rem;
+    }
+}
+
+/* Color Variables (Re-emphasizing to ensure shadow colors are consistent) */
+:root {
+    /* Light Mode Colors */
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --navbar-bg: #ffffff;
+    --navbar-shadow: rgba(0,0,0,0.1);
+    --card-shadow: rgba(0,0,0,0.08); /* New: Softer shadow for cards/elements */
+    --hover-shadow: rgba(0,0,0,0.15); /* New: Slightly stronger shadow on hover */
+}
+
+/* Dark Mode Colors */
+body.dark-mode {
+    --background-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --primary-color: #66b3ff;
+    --secondary-color: #3385ff;
+    --navbar-bg: #222222;
+    --navbar-shadow: rgba(255,255,255,0.1);
+    --card-shadow: rgba(255,255,255,0.08); /* Dark mode card shadow */
+    --hover-shadow: rgba(255,255,255,0.15); /* Dark mode hover shadow */
+}
+
+/* Navbar Styling */
+.navbar {
+    /* ... existing styles ... */
+    box-shadow: 0 2px 8px var(--navbar-shadow); /* Already had a shadow, good! */
+}
+
+/* Primary Button Style (General, apply to all .btn-primary) */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #ffffff !important;
+    padding: 0.75rem 1.5rem; /* Standard padding */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Add box-shadow to transition */
+    border: none;
+    cursor: pointer;
+    font-size: 1rem; /* Ensure consistent base font size */
+    box-shadow: 0 4px 10px var(--card-shadow); /* General button shadow */
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 6px 15px var(--hover-shadow); /* Slightly deeper shadow on hover */
+}
+
+
+/* --- Responsive Adjustments for Navbar --- */
+@media (max-width: 768px) {
+    /* ... existing styles for .navbar .nav-links etc. ... */
+
+    .navbar .nav-links a {
+        /* ... existing styles ... */
+        /* If a nav link button exists (like 'Get Started'), adjust its size here */
+        font-size: 0.95rem; /* Slightly smaller text for nav buttons on mobile */
+        padding: 10px 15px; /* Adjust padding for mobile nav links */
+    }
+
+    .navbar .nav-links .btn-primary { /* Target the button within the mobile nav */
+        font-size: 0.95rem; /* Ensure the button text is also scaled down */
+        padding: 0.6rem 1.2rem; /* Reduce button padding for mobile nav */
+        width: auto; /* Allow button to size itself, not full width in nav */
+        margin: 10px auto; /* Center it in the nav menu if desired */
+    }
+
+    /* Adjust specific elements in the Hero Section for mobile */
+    .hero-btn { /* Target the hero button specifically */
+        padding: 0.8rem 2rem; /* Reduced padding for the hero button on mobile */
+        font-size: 1rem; /* Standard font size for hero button on mobile */
+    }
+}
+
+@media (max-width: 576px) {
+    /* ... existing styles ... */
+    .hero-btn {
+        width: 100%; /* Make hero button full width again on very small screens */
+        display: block;
+        text-align: center;
+        padding: 0.8rem 1.5rem; /* Adjust padding for full-width button */
+    }
+}
+
+/* You might want to add shadows to other elements as we build them,
+   like cards for services or testimonials, using var(--card-shadow); */
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: row; /* Default for larger screens */
+    justify-content: center;
+    align-items: center;
+    padding: 100px 5% 50px; /* Top padding to clear fixed navbar, plus responsive side padding */
+    min-height: 80vh; /* Takes up most of the viewport height */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: left; /* Align content to left by default */
+    gap: 40px; /* Space between content and image */
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.hero-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 8px; /* Slightly more rounded for modern look */
+}
+
+.hero-image {
+    flex-shrink: 0; /* Prevent image from shrinking too much */
+}
+
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Soften edges of image */
+    box-shadow: 0 10px 30px var(--navbar-shadow); /* Subtle shadow for depth */
+    box-shadow: 0 10px 30px var(--card-shadow);
+}
+
+/* Responsive adjustments for Hero Section */
+@media (max-width: 992px) {
+    .hero-section {
+        flex-direction: column; /* Stack content and image on smaller screens */
+        text-align: center; /* Center text when stacked */
+        padding-top: 100px; /* Ensure space for fixed nav */
+        min-height: auto; /* Allow height to adjust */
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem; /* Adjust font size for tablets */
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .hero-image {
+        margin-top: 40px; /* Space between text and image */
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 2.2rem; /* Further adjust for mobile phones */
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-btn {
+        width: 100%; /* Full width button on small screens */
+        display: block; /* Make it a block element */
+        text-align: center;
+    }
+}
+
+/* General Section Styling */
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px; /* Center and add space below */
+}
+
+/* Services Section */
+.services-section {
+    padding: 80px 5%; /* Top/bottom padding, responsive side padding */
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between cards */
+    max-width: 1200px; /* Max width for the grid */
+    margin: 0 auto; /* Center the grid */
+}
+
+.service-card {
+    background-color: var(--navbar-bg); /* Use navbar background for card background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--card-shadow); /* Apply card shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+    display: flex; /* Flex container for content */
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content/lists apart if needed */
+}
+
+.service-card:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 10px 25px var(--hover-shadow); /* Stronger shadow on hover */
+}
+
+.service-card h3 {
+    font-size: 1.7rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.service-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    flex-grow: 1; /* Allows paragraph to take up available space */
+}
+
+.service-card ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin-bottom: 0; /* Remove default margin */
+}
+
+.service-card ul li {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    position: relative; /* For custom bullet point */
+    padding-left: 20px; /* Space for custom bullet */
+}
+
+.service-card ul li::before {
+    content: '•'; /* Custom bullet point */
+    color: var(--primary-color); /* Color the bullet */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em; /* Pull bullet back into padding */
+}
+
+.service-card ul li:last-child {
+    margin-bottom: 0; /* No margin for the last list item */
+}
+
+/* Responsive adjustments for Services Section */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    .section-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+    }
+    .services-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+    .service-card {
+        padding: 25px;
+    }
+    .service-card h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-section {
+        padding: 60px 1rem; /* More padding adjustment for very small screens */
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+}
